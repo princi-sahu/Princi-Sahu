@@ -12,7 +12,13 @@
     "custom_hero": {
       "type": "custom-hero",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "heading": "The Gift Guide",
+        "description": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "button_text": "SHOP NOW",
+        "button_link": "",
+        "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      }
     },
     "custom_header_QtR9V6": {
       "type": "custom-header",
@@ -23,10 +29,24 @@
         "button_label": "CHOOSE GIFT",
         "button_link": ""
       }
+    },
+    "custom_hero_4qCn4a": {
+      "type": "custom-hero",
+      "name": "Custom Hero",
+      "settings": {
+        "bg_image": "shopify://shop_images/Frame_1.svg",
+        "hero_image": "shopify://shop_images/Frame_1.svg",
+        "heading": "The Gift Guide",
+        "description": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "button_text": "SHOP NOW",
+        "button_link": "",
+        "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      }
     }
   },
   "order": [
     "custom_hero",
-    "custom_header_QtR9V6"
+    "custom_header_QtR9V6",
+    "custom_hero_4qCn4a"
   ]
 }
