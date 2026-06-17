@@ -1,0 +1,119 @@
+{% liquid
+  assign has_content = false
+  if section.settings.logo_text != blank
+    assign has_content = true
+  endif
+ if section.settings.announcement_text != blank
+    assign has_content = true
+  endif
+  if section.settings.button_label != blank
+    assign has_content = true
+  endif
+%}
+
+{% if has_content %}
+<div class="custom-header">
+  <div class="page-width">
+    <div class="custom-header-wrapper">
+
+    {% if section.settings.logo_text != blank %}
+      <div class="custom-header__logo">
+  <a href="{{ routes.root_url }}">
+    {% if section.settings.logo != blank %}
+      {{
+        section.settings.logo
+        | image_url: width: 200
+        | image_tag: alt: shop.name
+      }}
+    {% else %}
+      {{ shop.name }}
+    {% endif %}
+  </a>
+</div>
+    {% endif %}
+
+    {% if section.settings.announcement_text != blank %}
+      <p class="custom-header__announcement">
+        {{ section.settings.announcement_text }}
+      </p>
+    {% endif %}
+
+    <div class="custom-header__actions">
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+
+          {% when 'icon' %}
+            <div class="custom-header__icon" {{ block.shopify_attributes }}>
+              {{ block.settings.icon_text }}
+            </div>
+
+        {% endcase %}
+      {% endfor %}
+
+      {% if section.settings.button_label != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="custom-header__button"
+        >
+          {{ section.settings.button_label }}
+          <span>→</span>
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Custom Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "TISSO VISION"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon Bubble",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon Text",
+          "default": "K"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Header"
+    }
+  ]
+}
+{% endschema %}
