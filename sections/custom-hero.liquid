@@ -36,14 +36,7 @@
       {% endif %}
 
     </div>
-
-    {% if section.settings.bottom_text != blank %}
-      <p class="custom-hero__bottom-text">
-        {{ section.settings.bottom_text }}
-      </p>
-    {% endif %}
-
-    {% if section.settings.hero_image != blank %}
+   {% if section.settings.hero_image != blank %}
       <div class="hero-image">
         {{
           section.settings.hero_image
@@ -57,6 +50,11 @@
     {% endif %}
 
   </div>
+  {% if section.settings.bottom_text != blank %}
+      <p class="custom-hero__bottom-text">
+        {{ section.settings.bottom_text }}
+      </p>
+    {% endif %}
 </div>
 
 {% schema %}
