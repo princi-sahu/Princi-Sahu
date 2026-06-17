@@ -9,17 +9,24 @@
  */
 {
   "sections": {
-    "custom_header": {
-      "type": "custom-header",
-      "settings": {}
-    },
     "custom_hero": {
       "type": "custom-hero",
+      "disabled": true,
       "settings": {}
+    },
+    "custom_header_QtR9V6": {
+      "type": "custom-header",
+      "name": "Custom Header",
+      "settings": {
+        "logo_text": "TISSO VISION",
+        "announcement_text": "Find the ideal gift for your loved ones.",
+        "button_label": "CHOOSE GIFT",
+        "button_link": ""
+      }
     }
   },
   "order": [
-    "custom_header",
-    "custom_hero"
+    "custom_hero",
+    "custom_header_QtR9V6"
   ]
 }
