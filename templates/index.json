@@ -71,12 +71,42 @@
       "settings": {
         "heading": "Tisso vision in the wild"
       }
+    },
+    "product_grid_zkqDfE": {
+      "type": "product-grid",
+      "blocks": {
+        "product_item_cKJCTi": {
+          "type": "product_item",
+          "settings": {
+            "product": "black-leather-bag",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_KMb8e3": {
+          "type": "product_item",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        }
+      },
+      "block_order": [
+        "product_item_cKJCTi",
+        "product_item_KMb8e3"
+      ],
+      "name": "Product Grid",
+      "settings": {
+        "heading": "Tisso vision in the wild"
+      }
     }
   },
   "order": [
     "custom_hero",
+    "product_grid_a8RjbB",
     "custom_header_QtR9V6",
     "custom_hero_4qCn4a",
-    "product_grid_a8RjbB"
+    "product_grid_zkqDfE"
   ]
 }
