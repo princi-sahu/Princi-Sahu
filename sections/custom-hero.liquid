@@ -2,20 +2,16 @@
   <div class="page-width">
 
     {% if section.settings.bg_image != blank %}
-    <div class="custom-hero__bg">
-
-  {% if settings.logo != blank %}
-    {{
-      settings.logo
-      | image_url: width: 300
-      | image_tag:
-        class: 'custom-hero__bg-image',
-        loading: 'lazy',
-        alt: shop.name
-    }}
-  {% endif %}
-
-</div>
+      <div class="custom-hero__bg">
+        {{
+          section.settings.bg_image
+          | image_url: width: 2000
+          | image_tag:
+            class: 'custom-hero__bg-image',
+            loading: 'lazy',
+            alt: 'Background Image'
+        }}
+      </div>
     {% endif %}
 
     <div class="custom-hero__content">
@@ -36,7 +32,8 @@
           <span>{{ section.settings.button_text }}</span>
           <span>&rarr;</span>
         </a>
-  
+     
+        </div>
 
     </div>
    {% if section.settings.hero_image != blank %}
