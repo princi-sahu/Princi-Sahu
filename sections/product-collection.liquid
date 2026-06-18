@@ -1,41 +1,48 @@
 <div class="tisso-wild-grid-wrapper">
   <div class="page-width">
+
+    <div style="background:red; color:#fff; padding:30px; font-size:30px;">
+      TEST SECTION SHOWING
+    </div>
+
     <div class="tisso-wild-grid">
-  {% for block in section.blocks %}
 
-    {% assign product = block.settings.product %}
+      {% for block in section.blocks %}
 
-    {% if product != blank %}
-      <div class="tisso-wild-item" {{ block.shopify_attributes }}>
+        {% assign product = block.settings.product %}
 
-        {% if product.featured_image %}
-          {{
-            product.featured_image
-            | image_url: width: 800
-            | image_tag:
-              loading: 'lazy',
-              alt: product.title
-          }}
+        {% if product != blank %}
+          <div class="tisso-wild-item" {{ block.shopify_attributes }}>
+
+            {% if product.featured_image %}
+              {{
+                product.featured_image
+                | image_url: width: 800
+                | image_tag:
+                  loading: 'lazy',
+                  alt: product.title
+              }}
+            {% endif %}
+
+            <button
+              type="button"
+              class="tisso-hotspot-pin"
+              style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
+              data-title="{{ product.title }}"
+              data-price="{{ product.price | money }}"
+              data-desc="{{ product.description | strip_html | truncate: 120 }}"
+              data-img="{{ product.featured_image | image_url: width: 500 }}"
+            >
+              +
+            </button>
+
+          </div>
         {% endif %}
 
-        <button
-          type="button"
-          class="tisso-hotspot-pin"
-          style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
-          data-title="{{ product.title }}"
-          data-price="{{ product.price | money }}"
-          data-desc="{{ product.description | strip_html | truncate: 120 }}"
-          data-img="{{ product.featured_image | image_url: width: 500 }}"
-        >
-          +
-        </button>
+      {% endfor %}
 
-      </div>
-    {% endif %}
-
-  {% endfor %}
-</div>
-</div>
+    </div>
+  </div>
 </div>
 <!-- Modal -->
 
