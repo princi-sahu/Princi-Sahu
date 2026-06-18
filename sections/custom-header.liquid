@@ -17,13 +17,15 @@
     <div class="custom-header-wrapper">
 
     {% if section.settings.logo_text != blank %}
-      <div class="custom-header__logo">
+    <div class="custom-header__logo">
   <a href="{{ routes.root_url }}">
-    {% if section.settings.logo != blank %}
+    {% if settings.logo != blank %}
       {{
-        section.settings.logo
+        settings.logo
         | image_url: width: 200
-        | image_tag: alt: shop.name
+        | image_tag:
+          alt: shop.name,
+          loading: 'lazy'
       }}
     {% else %}
       {{ shop.name }}
