@@ -35,7 +35,7 @@
     "product_grid_zkqDfE": {
       "type": "product-grid",
       "blocks": {
-        "product_item_cKJCTi": {
+        "product_item_riKd3e": {
           "type": "product_item",
           "settings": {
             "product": "black-leather-bag",
@@ -43,18 +43,54 @@
             "pin_left": 50
           }
         },
-        "product_item_KMb8e3": {
+        "product_item_cbNUw8": {
           "type": "product_item",
           "settings": {
             "product": "blue-silk-tuxedo",
             "pin_top": 50,
             "pin_left": 50
           }
+        },
+        "product_item_9TpjHf": {
+          "type": "product_item",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_qABibA": {
+          "type": "product_item",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_EgjEcL": {
+          "type": "product_item",
+          "settings": {
+            "product": "classic-varsity-top",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_AhN8kh": {
+          "type": "product_item",
+          "settings": {
+            "product": "dark-denim-top",
+            "pin_top": 50,
+            "pin_left": 50
+          }
         }
       },
       "block_order": [
-        "product_item_cKJCTi",
-        "product_item_KMb8e3"
+        "product_item_riKd3e",
+        "product_item_cbNUw8",
+        "product_item_9TpjHf",
+        "product_item_qABibA",
+        "product_item_EgjEcL",
+        "product_item_AhN8kh"
       ],
       "name": "Product Grid",
       "settings": {
