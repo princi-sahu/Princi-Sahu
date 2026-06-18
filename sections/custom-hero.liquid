@@ -39,16 +39,14 @@
   </div>
 
   {% if section.settings.hero_image != blank %}
-    <div class="hero-image">
-      {{
-        section.settings.hero_image
-        | image_url: width: 1200
-        | image_tag:
-          class: 'hero-image__img',
-          loading: 'lazy',
-          alt: section.settings.heading
-      }}
-    </div>
+   <div class="hero-image">
+  <img
+    src="{{ section.settings.hero_image | image_url }}"
+    class="hero-image__img"
+    loading="lazy"
+    alt="{{ section.settings.heading }}"
+  >
+</div>
   {% endif %}
 
 </div>
