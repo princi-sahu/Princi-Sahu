@@ -42,11 +42,86 @@
         "button_link": "",
         "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
+    },
+    "product_collection_CWeGnV": {
+      "type": "product-collection",
+      "blocks": {
+        "product_item_q4w9UT": {
+          "type": "product_item",
+          "settings": {
+            "product": "black-leather-bag",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_XfQbpV": {
+          "type": "product_item",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_K8xQA4": {
+          "type": "product_item",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_wTWxmH": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_zyeKkp": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_MbmDfQ": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_AiygyP": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        }
+      },
+      "block_order": [
+        "product_item_q4w9UT",
+        "product_item_XfQbpV",
+        "product_item_K8xQA4",
+        "product_item_wTWxmH",
+        "product_item_zyeKkp",
+        "product_item_MbmDfQ",
+        "product_item_AiygyP"
+      ],
+      "name": "Tisso Wild Grid",
+      "settings": {
+        "heading": "Tisso vision in the wild"
+      }
     }
   },
   "order": [
     "custom_hero",
     "custom_header_QtR9V6",
-    "custom_hero_4qCn4a"
+    "custom_hero_4qCn4a",
+    "product_collection_CWeGnV"
   ]
 }
