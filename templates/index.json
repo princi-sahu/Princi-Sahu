@@ -43,13 +43,6 @@
         "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
     },
-    "product_collection_VibrM3": {
-      "type": "product-collection",
-      "name": "Tisso Wild Grid",
-      "settings": {
-        "heading": "Tisso vision in the wild"
-      }
-    },
     "product_collection_UNExGb": {
       "type": "product-collection",
       "blocks": {
@@ -129,7 +122,6 @@
     "custom_hero",
     "custom_header_QtR9V6",
     "custom_hero_4qCn4a",
-    "product_collection_VibrM3",
     "product_collection_UNExGb"
   ]
 }
