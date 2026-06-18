@@ -1,4 +1,5 @@
 <div class="custom-hero">
+
   <div class="page-width">
 
     {% if section.settings.bg_image != blank %}
@@ -28,35 +29,36 @@
         </p>
       {% endif %}
 
-        <a href="{{ section.settings.button_link }}" class="custom-hero__button">
-          <span>{{ section.settings.button_text }}</span>
-          <span>&rarr;</span>
-        </a>
-     
-        </div>
+      <a href="{{ section.settings.button_link }}" class="custom-hero__button">
+        <span>{{ section.settings.button_text }}</span>
+        <span>&rarr;</span>
+      </a>
 
     </div>
-   {% if section.settings.hero_image != blank %}
-      <div class="hero-image">
-        {{
-          section.settings.hero_image
-          | image_url: width: 1200
-          | image_tag:
-            class: 'hero-image__img',
-            loading: 'lazy',
-            alt: section.settings.heading
-        }}
-      </div>
-    {% endif %}
 
   </div>
-  
+
+  {% if section.settings.hero_image != blank %}
+    <div class="hero-image">
+      {{
+        section.settings.hero_image
+        | image_url: width: 1200
+        | image_tag:
+          class: 'hero-image__img',
+          loading: 'lazy',
+          alt: section.settings.heading
+      }}
+    </div>
+  {% endif %}
+
 </div>
+
 {% if section.settings.bottom_text != blank %}
-      <p class="custom-hero__bottom-text">
-        {{ section.settings.bottom_text }}
-      </p>
-    {% endif %}
+  <p class="custom-hero__bottom-text">
+    {{ section.settings.bottom_text }}
+  </p>
+{% endif %}
+
 {% schema %}
 {
   "name": "Custom Hero",
