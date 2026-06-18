@@ -43,38 +43,31 @@
         "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
     },
-    "product_collection_iajxtj": {
-      "type": "product-collection",
+    "product_grid_a8RjbB": {
+      "type": "product-grid",
       "blocks": {
-        "product_item_VngMb6": {
+        "product_item_gXhjgi": {
           "type": "product_item",
           "settings": {
-            "product": "",
+            "product": "black-leather-bag",
             "pin_top": 50,
             "pin_left": 50
           }
         },
-        "product_item_xFm6fk": {
+        "product_item_wKjncC": {
           "type": "product_item",
           "settings": {
-            "product": "",
+            "product": "blue-silk-tuxedo",
             "pin_top": 50,
             "pin_left": 50
           }
         }
       },
       "block_order": [
-        "product_item_VngMb6",
-        "product_item_xFm6fk"
+        "product_item_gXhjgi",
+        "product_item_wKjncC"
       ],
-      "name": "Tisso Wild Grid",
-      "settings": {
-        "heading": "Tisso vision in the wild"
-      }
-    },
-    "product_collection_nWwL4U": {
-      "type": "product-collection",
-      "name": "Tisso Wild Grid",
+      "name": "Product Grid",
       "settings": {
         "heading": "Tisso vision in the wild"
       }
@@ -82,9 +75,8 @@
   },
   "order": [
     "custom_hero",
-    "product_collection_iajxtj",
     "custom_header_QtR9V6",
     "custom_hero_4qCn4a",
-    "product_collection_nWwL4U"
+    "product_grid_a8RjbB"
   ]
 }
