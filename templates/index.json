@@ -42,77 +42,11 @@
         "button_link": "",
         "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
-    },
-    "product_collection_GEPp9N": {
-      "type": "product-collection",
-      "blocks": {
-        "product_item_TEU4j6": {
-          "type": "product_item",
-          "settings": {
-            "product": "black-leather-bag",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        },
-        "product_item_bRgDWV": {
-          "type": "product_item",
-          "settings": {
-            "product": "blue-silk-tuxedo",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        },
-        "product_item_9pMjzp": {
-          "type": "product_item",
-          "settings": {
-            "product": "chequered-red-shirt",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        },
-        "product_item_BP8ntN": {
-          "type": "product_item",
-          "settings": {
-            "product": "classic-leather-jacket",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        },
-        "product_item_kxtzNA": {
-          "type": "product_item",
-          "settings": {
-            "product": "classic-varsity-top",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        },
-        "product_item_PhzRWg": {
-          "type": "product_item",
-          "settings": {
-            "product": "dark-denim-top",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        }
-      },
-      "block_order": [
-        "product_item_TEU4j6",
-        "product_item_bRgDWV",
-        "product_item_9pMjzp",
-        "product_item_BP8ntN",
-        "product_item_kxtzNA",
-        "product_item_PhzRWg"
-      ],
-      "name": "Tisso Wild Grid",
-      "settings": {
-        "heading": "Tisso vision in the wild"
-      }
     }
   },
   "order": [
     "custom_hero",
     "custom_header_QtR9V6",
-    "custom_hero_4qCn4a",
-    "product_collection_GEPp9N"
+    "custom_hero_4qCn4a"
   ]
 }
