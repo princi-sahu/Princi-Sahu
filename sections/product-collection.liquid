@@ -1,43 +1,42 @@
-<div class="tisso-wild-section">
+<div class="tisso-wild-grid-wrapper">
   <div class="page-width">
-   {% if section.settings.heading != blank %}
-    <h2 class="tisso-wild-title">
-      {{ section.settings.heading }}
-    </h2>
-  {% endif %}
+    <div class="tisso-wild-grid">
+  {% for block in section.blocks %}
 
-  <div class="tisso-wild-grid">
+    {% assign product = block.settings.product %}
 
-    {% for block in section.blocks %}
+    {% if product != blank %}
       <div class="tisso-wild-item" {{ block.shopify_attributes }}>
 
-        {% if block.settings.image != blank %}
+        {% if product.featured_image %}
           {{
-            block.settings.image
+            product.featured_image
             | image_url: width: 800
             | image_tag:
               loading: 'lazy',
-              alt: block.settings.product_title
+              alt: product.title
           }}
         {% endif %}
 
         <button
+          type="button"
           class="tisso-hotspot-pin"
           style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
-          data-title="{{ block.settings.product_title }}"
-          data-price="{{ block.settings.product_price }}"
-          data-desc="{{ block.settings.product_desc }}"
-          data-img="{{ block.settings.image | image_url: width: 500 }}"
+          data-title="{{ product.title }}"
+          data-price="{{ product.price | money }}"
+          data-desc="{{ product.description | strip_html | truncate: 120 }}"
+          data-img="{{ product.featured_image | image_url: width: 500 }}"
         >
           +
         </button>
 
       </div>
-    {% endfor %}
+    {% endif %}
 
-  </div>
+  {% endfor %}
 </div>
-
+</div>
+</div>
 <!-- Modal -->
 
 <div id="tissoQuickViewModal" class="tisso-modal">
@@ -46,9 +45,7 @@
 
   <div class="tisso-modal-content">
 
-    <button class="tisso-modal-close">
-      &times;
-    </button>
+    <button class="tisso-modal-close">&times;</button>
 
     <div class="tisso-modal-body">
 
@@ -60,12 +57,34 @@
 
         <h3 id="tissoModalTitle"></h3>
 
-        <div id="tissoModalPrice"></div>
+        <div id="tissoModalPrice" class="tisso-modal-price"></div>
 
-        <p id="tissoModalDesc"></p>
+        <p id="tissoModalDesc" class="tisso-modal-desc"></p>
 
-        <button id="tissoAddToCartBtn">
-          ADD TO CART →
+        <div class="tisso-option-group">
+          <label>Color</label>
+
+          <div class="tisso-color-options">
+            <button class="active">White</button>
+            <button>Black</button>
+          </div>
+        </div>
+
+        <div class="tisso-option-group">
+          <label>Size</label>
+
+          <select class="tisso-size-select">
+            <option>Choose your size</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+        </div>
+
+        <button id="tissoAddToCartBtn" class="tisso-add-cart">
+          <span>ADD TO CART</span>
+          <span>→</span>
         </button>
 
       </div>
@@ -124,28 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ],
   "blocks": [
     {
-      "type": "image_item",
-      "name": "Image",
+      "type": "product_item",
+      "name": "Product Item",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "product_title",
-          "label": "Title"
-        },
-        {
-          "type": "text",
-          "id": "product_price",
-          "label": "Price"
-        },
-        {
-          "type": "textarea",
-          "id": "product_desc",
-          "label": "Description"
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
         },
         {
           "type": "range",
@@ -175,3 +179,157 @@ document.addEventListener("DOMContentLoaded", () => {
   ]
 }
 {% endschema %}
+<style>
+.tisso-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.tisso-modal.is-open{
+  display:flex;
+}
+
+.tisso-modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.4);
+}
+
+.tisso-modal-content{
+  position:relative;
+  background:#F5F5F5;
+  width:100%;
+  max-width:900px;
+  padding:40px;
+  z-index:2;
+}
+
+.tisso-modal-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  border:none;
+  background:none;
+  font-size:40px;
+  cursor:pointer;
+}
+
+.tisso-modal-body{
+  display:flex;
+  gap:40px;
+}
+
+.tisso-modal-left{
+  width:45%;
+}
+
+.tisso-modal-left img{
+  width:100%;
+  display:block;
+}
+
+.tisso-modal-right{
+  width:55%;
+}
+
+.tisso-modal-right h3{
+  font-size:42px;
+  font-weight:400;
+  margin:0 0 20px;
+}
+
+.tisso-modal-price{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.tisso-modal-desc{
+  font-size:20px;
+  line-height:1.5;
+  margin-bottom:30px;
+}
+
+.tisso-option-group{
+  margin-bottom:25px;
+}
+
+.tisso-option-group label{
+  display:block;
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.tisso-color-options{
+  display:flex;
+}
+
+.tisso-color-options button{
+  flex:1;
+  height:60px;
+  border:1px solid #000;
+  background:#fff;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.tisso-color-options button.active{
+  border-width:3px;
+}
+
+.tisso-size-select{
+  width:100%;
+  height:60px;
+  padding:0 20px;
+  font-size:22px;
+  border:1px solid #000;
+  background:#fff;
+}
+
+.tisso-add-cart{
+  width:100%;
+  height:70px;
+  margin-top:40px;
+  background:#000;
+  color:#fff;
+  border:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  .tisso-modal-content{
+    padding:20px;
+    max-width:95%;
+  }
+
+  .tisso-modal-body{
+    flex-direction:column;
+  }
+
+  .tisso-modal-left,
+  .tisso-modal-right{
+    width:100%;
+  }
+
+  .tisso-modal-right h3{
+    font-size:28px;
+  }
+
+  .tisso-modal-price{
+    font-size:32px;
+  }
+
+  .tisso-modal-desc{
+    font-size:16px;
+  }
+}
+</style>
