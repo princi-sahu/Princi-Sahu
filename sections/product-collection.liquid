@@ -1,197 +1,155 @@
 <div class="tisso-wild-grid-wrapper">
   <div class="page-width">
-
-    {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading }}</h2>
-    {% endif %}
-
     <div class="tisso-wild-grid">
+  {% for block in section.blocks %}
 
-      {% for block in section.blocks %}
-        {% assign product = block.settings.product %}
+    {% assign product = block.settings.product %}
 
-        {% if product != blank %}
-          <div class="tisso-wild-item" {{ block.shopify_attributes }}>
+    {% if product != blank %}
+      <div class="tisso-wild-item" {{ block.shopify_attributes }}>
 
-            {% if product.featured_image %}
-              {{
-                product.featured_image
-                | image_url: width: 800
-                | image_tag:
-                  loading: 'lazy',
-                  alt: product.title,
-                  class: 'tisso-product-image'
-              }}
-            {% endif %}
-
-            <button
-              type="button"
-              class="tisso-hotspot-pin"
-              style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
-              data-title="{{ product.title | escape }}"
-              data-price="{{ product.price | money }}"
-              data-desc="{{ product.description | strip_html | truncate: 120 | escape }}"
-              data-img="{{ product.featured_image | image_url: width: 500 }}"
-            >
-              +
-            </button>
-
-          </div>
+        {% if product.featured_image %}
+          {{
+            product.featured_image
+            | image_url: width: 800
+            | image_tag:
+              loading: 'lazy',
+              alt: product.title
+          }}
         {% endif %}
-      {% endfor %}
 
-    </div>
-  </div>
-</div>
-
-<div id="tissoQuickViewModal" class="tisso-modal">
-  <div class="tisso-modal-overlay"></div>
-
-  <div class="tisso-model-content-wrapper">
-    <div class="tisso-modal-content">
-
-      <button class="tisso-modal-close">&times;</button>
-
-      <div class="tisso-modal-top">
-
-        <div class="tisso-modal-left">
-          <img id="tissoModalImg" src="" alt="">
-        </div>
-
-        <div class="tisso-modal-right">
-          <h3 id="tissoModalTitle"></h3>
-          <div id="tissoModalPrice"></div>
-          <p id="tissoModalDesc"></p>
-        </div>
+        <button
+          type="button"
+          class="tisso-hotspot-pin"
+          style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
+          data-title="{{ product.title }}"
+          data-price="{{ product.price | money }}"
+          data-desc="{{ product.description | strip_html | truncate: 120 }}"
+          data-img="{{ product.featured_image | image_url: width: 500 }}"
+        >
+          +
+        </button>
 
       </div>
+    {% endif %}
 
-      <button id="tissoAddToCartBtn">
-        <span>ADD TO CART</span>
-        <span>→</span>
-      </button>
+  {% endfor %}
+</div>
+</div>
+</div>
+<!-- Modal -->
 
+<div id="tissoQuickViewModal" class="tisso-modal">
+
+  <div class="tisso-modal-overlay"></div>
+ <div class="tisso-model-content-wrapper">
+  <div class="tisso-modal-content">
+
+    <div class="tisso-modal-top">
+
+      <div class="tisso-modal-left">
+        <img id="tissoModalImg" src="" alt="">
+      </div>
+
+      <div class="tisso-modal-right">
+
+        <h3 id="tissoModalTitle"></h3>
+
+        <div id="tissoModalPrice"></div>
+
+        <p id="tissoModalDesc"></p>
+
+      </div>
     </div>
-  </div>
+       <button class="tisso-modal-close">&times;</button>
 </div>
 
-<style>
-.tisso-wild-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
+    <div class="tisso-option-wrapper">
+      <label>Color</label>
 
-.tisso-wild-item{
-  position:relative;
-}
+      <div class="tisso-color-swatches">
+        <button type="button" class="active">White</button>
+        <button type="button">Black</button>
+      </div>
+    </div>
 
-.tisso-product-image{
-  width:100%;
-  display:block;
-}
+    <div class="tisso-option-wrapper">
+      <label>Size</label>
 
-.tisso-hotspot-pin{
-  position:absolute;
-  transform:translate(-50%,-50%);
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  cursor:pointer;
-}
+      <div class="tisso-select-wrapper">
+        <select>
+          <option selected disabled>Choose your size</option>
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+      </div>
+    </div>
 
-.tisso-modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:999;
-}
-
-.tisso-modal.is-open{
-  display:block;
-}
-
-.tisso-modal-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.5);
-}
-
-.tisso-model-content-wrapper{
-  position:relative;
-  z-index:2;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100%;
-}
-
-.tisso-modal-content{
-  background:#fff;
-  padding:20px;
-  max-width:800px;
-  width:90%;
-}
-
-.tisso-modal-top{
-  display:flex;
-  gap:20px;
-}
-
-.tisso-modal-left img{
-  max-width:300px;
-  width:100%;
-}
-
-.tisso-modal-close{
-  float:right;
-  border:none;
-  background:none;
-  font-size:30px;
-  cursor:pointer;
-}
-</style>
+    <button id="tissoAddToCartBtn">
+      <span>ADD TO CART</span>
+      <span>→</span>
+    </button>
+  
+  </div>
+   
+</div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const modal = document.getElementById('tissoQuickViewModal');
-  const modalImg = document.getElementById('tissoModalImg');
-  const modalTitle = document.getElementById('tissoModalTitle');
-  const modalPrice = document.getElementById('tissoModalPrice');
-  const modalDesc = document.getElementById('tissoModalDesc');
+  const modal = document.getElementById("tissoQuickViewModal");
 
-  document.querySelectorAll('.tisso-hotspot-pin').forEach(function(pin){
+  const modalImg = document.getElementById("tissoModalImg");
+  const modalTitle = document.getElementById("tissoModalTitle");
+  const modalPrice = document.getElementById("tissoModalPrice");
+  const modalDesc = document.getElementById("tissoModalDesc");
 
-    pin.addEventListener('click', function(){
+  /* Open Modal */
+  document.querySelectorAll(".tisso-hotspot-pin").forEach(pin => {
+
+    pin.addEventListener("click", () => {
 
       modalImg.src = pin.dataset.img;
       modalTitle.textContent = pin.dataset.title;
       modalPrice.textContent = pin.dataset.price;
       modalDesc.textContent = pin.dataset.desc;
 
-      modal.classList.add('is-open');
+      modal.classList.add("is-open");
+
     });
 
   });
 
-  const closeBtn = document.querySelector('.tisso-modal-close');
-  const overlay = document.querySelector('.tisso-modal-overlay');
+  /* Close Modal */
+  document.querySelector(".tisso-modal-close").addEventListener("click", () => {
+    modal.classList.remove("is-open");
+  });
 
-  if(closeBtn){
-    closeBtn.addEventListener('click', function(){
-      modal.classList.remove('is-open');
-    });
-  }
+  document.querySelector(".tisso-modal-overlay").addEventListener("click", () => {
+    modal.classList.remove("is-open");
+  });
 
-  if(overlay){
-    overlay.addEventListener('click', function(){
-      modal.classList.remove('is-open');
+  /* Color Toggle */
+  const colorButtons = document.querySelectorAll(".tisso-color-swatches button");
+
+  colorButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      colorButtons.forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
     });
-  }
+
+  });
 
 });
 </script>
+
 
 {% schema %}
 {
@@ -242,3 +200,141 @@ document.addEventListener('DOMContentLoaded', function () {
   ]
 }
 {% endschema %}
+<style>
+  .tisso-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+}
+
+.tisso-modal.is-open{
+  display:block;
+}
+
+.tisso-modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.4);
+}
+.tisso-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    max-width: 331px;
+    background: #FFFFFF;
+    padding: 36px 20px 25px;
+}
+
+.tisso-modal-close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  border:none;
+  background:none;
+  font-size:42px;
+  cursor:pointer;
+}
+
+.tisso-modal-top {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 7px;
+}
+.tisso-modal-left {
+    max-width: 120px;
+    max-height: 140px;
+    width: 100%;
+    height: 100%;
+}
+.tisso-modal-left img{
+  width:100%;
+  display:block;
+}
+#tissoModalTitle {
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    margin-bottom: 20px;
+}
+#tissoModalPrice {
+    margin-bottom: 12px;
+    font-family: Lustria;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+#tissoModalDesc {
+    font-family: Jost;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 110.00000000000001%;
+    letter-spacing: -1%;
+   color: #000000;
+
+}
+
+.tisso-option-wrapper{
+  margin-bottom:20px;
+}
+
+.tisso-option-wrapper label{
+  display:block;
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.tisso-color-swatches{
+  display:flex;
+}
+
+.tisso-color-swatches button{
+  width:50%;
+  height:60px;
+  border:1px solid #000;
+  background:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.tisso-color-swatches button.active{
+  border:3px solid #000;
+}
+
+.tisso-select-wrapper select{
+  width:100%;
+  height:60px;
+  padding:0 20px;
+  border:1px solid #000;
+  font-size:18px;
+  background:#fff;
+}
+
+#tissoAddToCartBtn{
+  width:100%;
+  height:68px;
+  border:none;
+  background:#000;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+  font-size:18px;
+  cursor:pointer;
+}
+.tisso-color-swatches button.active{
+  background:#000;
+  color:#fff;
+  border:1px solid #000;
+}
+</style>
