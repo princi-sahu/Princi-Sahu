@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrice = document.getElementById("tissoModalPrice");
   const modalDesc = document.getElementById("tissoModalDesc");
 
+  /* Open Modal */
   document.querySelectorAll(".tisso-hotspot-pin").forEach(pin => {
 
     pin.addEventListener("click", () => {
@@ -113,10 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
       modalDesc.textContent = pin.dataset.desc;
 
       modal.classList.add("is-open");
+
     });
 
   });
 
+  /* Close Modal */
   document.querySelector(".tisso-modal-close").addEventListener("click", () => {
     modal.classList.remove("is-open");
   });
@@ -125,8 +128,26 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.remove("is-open");
   });
 
+  /* Color Toggle */
+  const colorButtons = document.querySelectorAll(".tisso-color-swatches button");
+
+  colorButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      colorButtons.forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+    });
+
+  });
+
 });
 </script>
+
 
 {% schema %}
 {
