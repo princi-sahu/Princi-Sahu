@@ -9,46 +9,6 @@
  */
 {
   "sections": {
-    "custom_hero": {
-      "type": "custom-hero",
-      "disabled": true,
-      "settings": {
-        "heading": "The Gift Guide",
-        "description": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
-        "button_text": "SHOP NOW",
-        "button_link": "",
-        "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-      }
-    },
-    "product_grid_a8RjbB": {
-      "type": "product-grid",
-      "blocks": {
-        "product_item_gXhjgi": {
-          "type": "product_item",
-          "settings": {
-            "product": "black-leather-bag",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        },
-        "product_item_wKjncC": {
-          "type": "product_item",
-          "settings": {
-            "product": "blue-silk-tuxedo",
-            "pin_top": 50,
-            "pin_left": 50
-          }
-        }
-      },
-      "block_order": [
-        "product_item_gXhjgi",
-        "product_item_wKjncC"
-      ],
-      "name": "Product Grid",
-      "settings": {
-        "heading": "Tisso vision in the wild"
-      }
-    },
     "custom_header_QtR9V6": {
       "type": "custom-header",
       "name": "Custom Header",
@@ -60,19 +20,6 @@
       }
     },
     "custom_hero_4qCn4a": {
-      "type": "custom-hero",
-      "name": "Custom Hero",
-      "settings": {
-        "bg_image": "shopify://shop_images/Frame_1.svg",
-        "hero_image": "shopify://shop_images/Frame_1.svg",
-        "heading": "The Gift Guide",
-        "description": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
-        "button_text": "SHOP NOW",
-        "button_link": "",
-        "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-      }
-    },
-    "custom_hero_Vjan3c": {
       "type": "custom-hero",
       "name": "Custom Hero",
       "settings": {
@@ -116,11 +63,8 @@
     }
   },
   "order": [
-    "custom_hero",
-    "product_grid_a8RjbB",
     "custom_header_QtR9V6",
     "custom_hero_4qCn4a",
-    "custom_hero_Vjan3c",
     "product_grid_zkqDfE"
   ]
 }
