@@ -1,8 +1,13 @@
 <div class="tisso-wild-grid-wrapper">
   <div class="page-width">
+    {% if section.settings.heading != blank %}
+  <h2 class="section-heading">
+    {{ section.settings.heading }}
+  </h2>
+{% endif %}
     <div class="tisso-wild-grid">
   {% for block in section.blocks %}
-
+   
     {% assign product = block.settings.product %}
 
     {% if product != blank %}
