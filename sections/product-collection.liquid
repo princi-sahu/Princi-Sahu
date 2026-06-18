@@ -47,7 +47,7 @@
 
     <button class="tisso-modal-close">&times;</button>
 
-    <div class="tisso-modal-body">
+    <div class="tisso-modal-top">
 
       <div class="tisso-modal-left">
         <img id="tissoModalImg" src="" alt="">
@@ -57,39 +57,40 @@
 
         <h3 id="tissoModalTitle"></h3>
 
-        <div id="tissoModalPrice" class="tisso-modal-price"></div>
+        <div id="tissoModalPrice"></div>
 
-        <p id="tissoModalDesc" class="tisso-modal-desc"></p>
-
-        <div class="tisso-option-group">
-          <label>Color</label>
-
-          <div class="tisso-color-options">
-            <button class="active">White</button>
-            <button>Black</button>
-          </div>
-        </div>
-
-        <div class="tisso-option-group">
-          <label>Size</label>
-
-          <select class="tisso-size-select">
-            <option>Choose your size</option>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
-          </select>
-        </div>
-
-        <button id="tissoAddToCartBtn" class="tisso-add-cart">
-          <span>ADD TO CART</span>
-          <span>→</span>
-        </button>
+        <p id="tissoModalDesc"></p>
 
       </div>
 
     </div>
+
+    <div class="tisso-option-wrapper">
+      <label>Color</label>
+
+      <div class="tisso-color-swatches">
+        <button type="button" class="active">White</button>
+        <button type="button">Black</button>
+      </div>
+    </div>
+
+    <div class="tisso-option-wrapper">
+      <label>Size</label>
+
+      <div class="tisso-select-wrapper">
+        <select>
+          <option selected disabled>Choose your size</option>
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="tissoAddToCartBtn">
+      <span>ADD TO CART</span>
+      <span>→</span>
+    </button>
 
   </div>
 
