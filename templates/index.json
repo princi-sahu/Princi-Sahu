@@ -42,11 +42,104 @@
         "button_link": "",
         "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
+    },
+    "product_grid_DgH3hV": {
+      "type": "product-grid",
+      "blocks": {
+        "product_item_3GxhkG": {
+          "type": "product_item",
+          "settings": {
+            "product": "black-leather-bag",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_cNdT8k": {
+          "type": "product_item",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_a8TG3D": {
+          "type": "product_item",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_x73Pkz": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_7q7DLk": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_96wze4": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_jgLDVd": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_E7GpC9": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        },
+        "product_item_rpFgTD": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "pin_top": 50,
+            "pin_left": 50
+          }
+        }
+      },
+      "block_order": [
+        "product_item_3GxhkG",
+        "product_item_cNdT8k",
+        "product_item_a8TG3D",
+        "product_item_x73Pkz",
+        "product_item_7q7DLk",
+        "product_item_96wze4",
+        "product_item_jgLDVd",
+        "product_item_E7GpC9",
+        "product_item_rpFgTD"
+      ],
+      "name": "Tisso Wild Grid",
+      "settings": {
+        "heading": "Tisso vision in the wild"
+      }
     }
   },
   "order": [
     "custom_hero",
     "custom_header_QtR9V6",
-    "custom_hero_4qCn4a"
+    "custom_hero_4qCn4a",
+    "product_grid_DgH3hV"
   ]
 }
