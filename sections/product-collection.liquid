@@ -45,9 +45,7 @@
 
   <div class="tisso-modal-content">
 
-    <button class="tisso-modal-close">
-      &times;
-    </button>
+    <button class="tisso-modal-close">&times;</button>
 
     <div class="tisso-modal-body">
 
@@ -59,12 +57,34 @@
 
         <h3 id="tissoModalTitle"></h3>
 
-        <div id="tissoModalPrice"></div>
+        <div id="tissoModalPrice" class="tisso-modal-price"></div>
 
-        <p id="tissoModalDesc"></p>
+        <p id="tissoModalDesc" class="tisso-modal-desc"></p>
 
-        <button id="tissoAddToCartBtn">
-          ADD TO CART →
+        <div class="tisso-option-group">
+          <label>Color</label>
+
+          <div class="tisso-color-options">
+            <button class="active">White</button>
+            <button>Black</button>
+          </div>
+        </div>
+
+        <div class="tisso-option-group">
+          <label>Size</label>
+
+          <select class="tisso-size-select">
+            <option>Choose your size</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+        </div>
+
+        <button id="tissoAddToCartBtn" class="tisso-add-cart">
+          <span>ADD TO CART</span>
+          <span>→</span>
         </button>
 
       </div>
