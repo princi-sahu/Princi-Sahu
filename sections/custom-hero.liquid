@@ -28,12 +28,11 @@
         </p>
       {% endif %}
 
-      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
         <a href="{{ section.settings.button_link }}" class="custom-hero__button">
           <span>{{ section.settings.button_text }}</span>
           <span>&rarr;</span>
         </a>
-      {% endif %}
+  
 
     </div>
    {% if section.settings.hero_image != blank %}
