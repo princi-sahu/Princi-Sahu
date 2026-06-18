@@ -93,14 +93,6 @@
             "pin_top": 50,
             "pin_left": 50
           }
-        },
-        "product_item_MJ7ABn": {
-          "type": "product_item",
-          "settings": {
-            "product": "",
-            "pin_top": 50,
-            "pin_left": 50
-          }
         }
       },
       "block_order": [
@@ -109,8 +101,7 @@
         "product_item_KkUp3x",
         "product_item_QQz8Hy",
         "product_item_dqimeK",
-        "product_item_f49JBC",
-        "product_item_MJ7ABn"
+        "product_item_f49JBC"
       ],
       "name": "Tisso Wild Grid",
       "settings": {
