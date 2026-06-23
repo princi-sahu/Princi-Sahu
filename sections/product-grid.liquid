@@ -111,6 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrice = document.getElementById("tissoModalPrice");
   const modalDesc = document.getElementById("tissoModalDesc");
 
+  const addToCartBtn = document.getElementById("tissoAddToCartBtn");
+
+  let currentVariantId = null;
+
   /* Open Modal */
   document.querySelectorAll(".tisso-hotspot-pin").forEach(pin => {
 
@@ -120,6 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
       modalTitle.textContent = pin.dataset.title;
       modalPrice.textContent = pin.dataset.price;
       modalDesc.textContent = pin.dataset.desc;
+
+      currentVariantId = pin.dataset.variantId;
 
       modal.classList.add("is-open");
 
@@ -153,9 +159,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
+  /* Add To Cart */
+  addToCartBtn.addEventListener("click", async () => {
+
+    if (!currentVariantId) {
+      alert("Product variant not found");
+      return;
+    }
+
+    addToCartBtn.disabled = true;
+
+    try {
+
+      const response = await fetch("/cart/add.js", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: currentVariantId,
+          quantity: 1
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add product");
+      }
+
+      modal.classList.remove("is-open");
+
+      /* Redirect to cart */
+      window.location.href = "/cart";
+
+    } catch (error) {
+
+      console.error(error);
+      alert("Unable to add product to cart");
+
+    } finally {
+
+      addToCartBtn.disabled = false;
+
+    }
+
+  });
+
 });
 </script>
-
 
 {% schema %}
 {
