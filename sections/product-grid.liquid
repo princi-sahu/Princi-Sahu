@@ -23,17 +23,18 @@
           }}
         {% endif %}
 
-        <button
-          type="button"
-          class="tisso-hotspot-pin"
-          style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
-          data-title="{{ product.title }}"
-          data-price="{{ product.price | money }}"
-          data-desc="{{ product.description | strip_html | truncate: 120 }}"
-          data-img="{{ product.featured_image | image_url: width: 500 }}"
-        >
-          +
-        </button>
+       <button
+      type="button"
+     class="tisso-hotspot-pin"
+    style="top:{{ block.settings.pin_top }}%; left:{{ block.settings.pin_left }}%;"
+    data-title="{{ product.title }}"
+    data-price="{{ product.price | money }}"
+    data-desc="{{ product.description | strip_html | truncate: 120 }}"
+    data-img="{{ product.featured_image | image_url: width: 500 }}"
+    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+    >
+    +
+   </button>
 
       </div>
     {% endif %}
