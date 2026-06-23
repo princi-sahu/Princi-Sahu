@@ -102,107 +102,50 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+/* Add To Cart */
+addToCartBtn.addEventListener("click", async () => {
 
-  const modal = document.getElementById("tissoQuickViewModal");
+  if (!currentVariantId) {
+    alert("Product variant not found");
+    return;
+  }
 
-  const modalImg = document.getElementById("tissoModalImg");
-  const modalTitle = document.getElementById("tissoModalTitle");
-  const modalPrice = document.getElementById("tissoModalPrice");
-  const modalDesc = document.getElementById("tissoModalDesc");
+  const originalText = addToCartBtn.innerHTML;
 
-  const addToCartBtn = document.getElementById("tissoAddToCartBtn");
+  addToCartBtn.disabled = true;
+  addToCartBtn.innerHTML = "<span>ADDING...</span>";
 
-  let currentVariantId = null;
+  try {
 
-  /* Open Modal */
-  document.querySelectorAll(".tisso-hotspot-pin").forEach(pin => {
-
-    pin.addEventListener("click", () => {
-
-      modalImg.src = pin.dataset.img;
-      modalTitle.textContent = pin.dataset.title;
-      modalPrice.textContent = pin.dataset.price;
-      modalDesc.textContent = pin.dataset.desc;
-
-      currentVariantId = pin.dataset.variantId;
-
-      modal.classList.add("is-open");
-
+    const response = await fetch("/cart/add.js", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: currentVariantId,
+        quantity: 1
+      })
     });
 
-  });
-
-  /* Close Modal */
-  document.querySelector(".tisso-modal-close").addEventListener("click", () => {
-    modal.classList.remove("is-open");
-  });
-
-  document.querySelector(".tisso-modal-overlay").addEventListener("click", () => {
-    modal.classList.remove("is-open");
-  });
-
-  /* Color Toggle */
-  const colorButtons = document.querySelectorAll(".tisso-color-swatches button");
-
-  colorButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      colorButtons.forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
-
-    });
-
-  });
-
-  /* Add To Cart */
-  addToCartBtn.addEventListener("click", async () => {
-
-    if (!currentVariantId) {
-      alert("Product variant not found");
-      return;
+    if (!response.ok) {
+      throw new Error("Failed to add product");
     }
 
-    addToCartBtn.disabled = true;
+    modal.classList.remove("is-open");
 
-    try {
+    // Direct redirect after successful add
+    window.location.assign("/cart");
 
-      const response = await fetch("/cart/add.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          id: currentVariantId,
-          quantity: 1
-        })
-      });
+  } catch (error) {
 
-      if (!response.ok) {
-        throw new Error("Failed to add product");
-      }
+    console.error(error);
+    alert("Unable to add product to cart");
 
-      modal.classList.remove("is-open");
+    addToCartBtn.disabled = false;
+    addToCartBtn.innerHTML = originalText;
 
-      /* Redirect to cart */
-      window.location.href = "/cart";
-
-    } catch (error) {
-
-      console.error(error);
-      alert("Unable to add product to cart");
-
-    } finally {
-
-      addToCartBtn.disabled = false;
-
-    }
-
-  });
+  }
 
 });
 </script>
