@@ -100,51 +100,99 @@
   </div>
      </div>
 </div>
-
 <script>
-/* Add To Cart */
-addToCartBtn.addEventListener("click", async () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-  if (!currentVariantId) {
-    alert("Product variant not found");
-    return;
+  const modal = document.getElementById("tissoQuickViewModal");
+  const modalImg = document.getElementById("tissoModalImg");
+  const modalTitle = document.getElementById("tissoModalTitle");
+  const modalPrice = document.getElementById("tissoModalPrice");
+  const modalDesc = document.getElementById("tissoModalDesc");
+  const addToCartBtn = document.getElementById("tissoAddToCartBtn");
+
+  let currentVariantId = null;
+
+  /* Open Modal */
+  document.querySelectorAll(".tisso-hotspot-pin").forEach(pin => {
+    pin.addEventListener("click", () => {
+      modalImg.src = pin.dataset.img;
+      modalTitle.textContent = pin.dataset.title;
+      modalPrice.textContent = pin.dataset.price;
+      modalDesc.textContent = pin.dataset.desc;
+
+      currentVariantId = pin.dataset.variantId;
+
+      modal.classList.add("is-open");
+    });
+  });
+
+  /* Close Modal */
+  const closeBtn = document.querySelector(".tisso-modal-close");
+  const overlay = document.querySelector(".tisso-modal-overlay");
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("is-open");
+    });
   }
 
-  const originalText = addToCartBtn.innerHTML;
-
-  addToCartBtn.disabled = true;
-  addToCartBtn.innerHTML = "<span>ADDING...</span>";
-
-  try {
-
-    const response = await fetch("/cart/add.js", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        id: currentVariantId,
-        quantity: 1
-      })
+  if (overlay) {
+    overlay.addEventListener("click", () => {
+      modal.classList.remove("is-open");
     });
+  }
 
-    if (!response.ok) {
-      throw new Error("Failed to add product");
-    }
+  /* Color Toggle */
+  const colorButtons = document.querySelectorAll(".tisso-color-swatches button");
 
-    modal.classList.remove("is-open");
+  colorButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      colorButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
 
-    // Direct redirect after successful add
-    window.location.assign("/cart");
+  /* Add To Cart */
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener("click", async () => {
 
-  } catch (error) {
+      if (!currentVariantId) {
+        alert("Product variant not found");
+        return;
+      }
 
-    console.error(error);
-    alert("Unable to add product to cart");
+      try {
+        addToCartBtn.disabled = true;
 
-    addToCartBtn.disabled = false;
-    addToCartBtn.innerHTML = originalText;
+        const response = await fetch("/cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            id: currentVariantId,
+            quantity: 1
+          })
+        });
 
+        if (!response.ok) {
+          throw new Error("Failed to add product");
+        }
+
+        modal.classList.remove("is-open");
+
+        setTimeout(() => {
+          window.location.href = "/cart";
+        }, 300);
+
+      } catch (error) {
+        console.error("Add to cart error:", error);
+        alert("Unable to add product to cart");
+      } finally {
+        addToCartBtn.disabled = false;
+      }
+
+    });
   }
 
 });
